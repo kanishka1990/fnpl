@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "PostFNPLData";
+}
+@using Microsoft.Extensions.Configuration;
+@inject IConfiguration Configuration
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Addresstokenfloor" content="">
+    <meta name="Addresstokenapartment" content="">
+    <meta name="Addresstokenstreet" content="">
+    <meta name="Addresstokencity" content="">
+    <meta name="Addresstokencounty" content="">
+    <meta name="Addresstokenpostcode" content="">
+    <meta name="Addresstokencountry" content="">
+
+
+    <meta name="itineraryHotelname" content="">
+    <meta name="itineraryHotelcountry" content="">
+    <meta name="itineraryHotelcheckingin" content="">
+    <meta name="itineraryHotelcheckingout" content="">
+    <meta name="checkoutAmount" content="">
+
+    <meta name="pcountry" content="">
+    <meta name="email" content="">
+    <meta name="pnumber" content="">
+
+    <meta name="flights" content="">
+    @{ 
+
+
+        string origin = Configuration.GetValue<string>("MyAppSettings:appOrigin");
+    }
+    <script src="@origin/lib/jquery/dist/jquery.js"></script>
+
+@*// ===================*@
+<script src="@origin/js/fnplLoadData.js"></script>
+</head>
+<body>
+
+    @{
+        var a = Configuration.GetValue<string>("MyAppSettings:apiToken");
+    }
+    <div id="fnplPnl">  </div>
+    <script src="https://widget.flynowpaylater.com/cdn/integration.min.js?callback=fnplCallback&key=@a"></script>
+  
+ 
+</body>
+</html>
+
